@@ -1,0 +1,6 @@
+#!/bin/sh
+pnpm dedupe --check
+pnpm prettier:check
+pnpm lint
+pnpm types
+pnpm build
