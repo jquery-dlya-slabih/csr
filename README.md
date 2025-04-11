@@ -1,6 +1,6 @@
 # csr
 
-Server side rendering template
+Client side rendering template
 
 ## For dev
 
