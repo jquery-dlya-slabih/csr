@@ -1,5 +1,6 @@
 import eslint from '@eslint/js';
 import pluginQuery from '@tanstack/eslint-plugin-query';
+import pluginRouter from '@tanstack/eslint-plugin-router';
 import vitest from '@vitest/eslint-plugin';
 import importPlugin from 'eslint-plugin-import';
 import eslintPluginJestDom from 'eslint-plugin-jest-dom';
@@ -52,6 +53,7 @@ export default tsEslint.config(
     }
   },
   ...pluginQuery.configs['flat/recommended'],
+  ...pluginRouter.configs['flat/recommended'],
   {
     files: ['**/*.test.ts?(x)'],
     ...vitest.configs.recommended

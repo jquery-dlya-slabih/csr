@@ -42,6 +42,9 @@ importers:
       '@tanstack/eslint-plugin-query':
         specifier: 5.72.2
         version: 5.72.2(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)
+      '@tanstack/eslint-plugin-router':
+        specifier: 1.115.0
+        version: 1.115.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)
       '@tanstack/react-query-devtools':
         specifier: 5.72.2
         version: 5.72.2(@tanstack/react-query@5.72.2(react@19.1.0))(react@19.1.0)
@@ -1703,6 +1706,11 @@ packages:
 
   '@tanstack/eslint-plugin-query@5.72.2':
     resolution: {integrity: sha512-JzfDu6fA/6jj25td+NxYSjiSC2kqo62uVWgquqUUOgzQK+/eJ2IH3pVDeIXrrhQ9VsaJEBeaJN4Lc0klnlVvGQ==}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
+
+  '@tanstack/eslint-plugin-router@1.115.0':
+    resolution: {integrity: sha512-vwKP9NjzAQ2nU3qADDoTSTxD1vNduLcK0312AWkXkicCWUZQZJtmRuZXPk9cEfuzDD2BAJCIUmlaF1K0vq4oRw==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
@@ -6321,6 +6329,14 @@ snapshots:
       vite: 6.2.6(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.3)(terser@5.39.0)(tsx@4.19.3)
 
   '@tanstack/eslint-plugin-query@5.72.2(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.29.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)
+      eslint: 9.24.0(jiti@2.4.2)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  '@tanstack/eslint-plugin-router@1.115.0(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
       '@typescript-eslint/utils': 8.29.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)
       eslint: 9.24.0(jiti@2.4.2)
