@@ -1,10 +1,10 @@
-# ssr
+# csr
 
 Server side rendering template
 
 ## For dev
 
-1. clone project `git clone https://github.com/jquery-dlya-slabih/ssr.git`
+1. clone project `git clone https://github.com/jquery-dlya-slabih/csr.git`
 2. install pnpm 10.x version `npm install -g pnpm@latest-10`
 3. install deps `pnpm install`
 4. run dev `pnpm run dev`
@@ -13,15 +13,13 @@ Server side rendering template
 
 1. install deps `pnpm install`
 2. pnpm build
-3. pnpm prod
 
 ## Commands
 
 | description                    | command                    |
-| ------------------------------ | -------------------------- |
+|--------------------------------| -------------------------- |
 | run dev build with dev server  | `pnpm dev`                 |
-| run build                      | `pnpm build`               |
-| run prod server (build needed) | `pnpm prod`                |
+| run prod build                 | `pnpm build`               |
 | run linting                    | `pnpm lint`                |
 | run prettier check             | `pnpm prettier:check`      |
 | run prettier write             | `pnpm prettier:write`      |
@@ -34,20 +32,6 @@ Server side rendering template
 | show e2e tests information     | `pnpm e2e:report`          |
 | run e2e codegen                | `pnpm e2e:codegen`         |
 | generate assets for pwa        | `pnpm generate-pwa-assets` |
-
-## Serving static files
-
-If you are using **nginx** or something else for serving static and compression, delete this strings from file `server.ts` and **compression** dependencies from file `package.json`.
-
-```ts
-if (isProduction) {
-  app.use(compression());
-  app.use(express.static('dist'));
-}
-```
-
-You may need to additionally reconfigure the public path. This can be done by setting `base` in the `vite.config.ts` file.
-The same goes for using the **vite-plugin-static-copy** plugin. It’s better to put the `robots.txt` file in the required section of the site at the CD stage. And remove the logic for copy file in the root from the CI stage.
 
 # Hooks
 
@@ -80,28 +64,6 @@ For aliasing just add alias in file `tsconfig.app.json`.
 | ------ | ---------- |
 | avat   | avatpass   |
 | emilys | emilyspass |
-
-# Redis
-
-Cache for all html pages. Cache expiration eq 10 min.
-
-1. install redis `brew install redis`
-2. run redis `redis-server`
-3. change value of env `DISABLE_REDIS_CACHE` in `package.json` to `false`
-4. use `pnpm dev` command
-
-For reset all cache use `/reset_redis_cache` handler.
-
-# Server timing API
-
-To enable https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Server-Timing just use query flag `timing=true`.
-
-Example:
-
-- W/o timing https://ssr-local.com:3000, https://ssr-local.com:3000/posts/5;
-- With timing https://ssr-local.com:3000/?timing=true, https://ssr-local.com:3000/posts/5?timing=true.
-
-To view data, go to chrome **devtools**, **network** tab, next select your **html**-file and choose **timing** tab.
 
 # Tests
 
@@ -136,6 +98,5 @@ In other hand, if you don't need to support older browsers than tailwind designe
 # TO DO
 
 - https://vite-pwa-org.netlify.app/ add offline mode
-- research fastify, http2, early hints
 - research mswjs
 - research https://orval.dev/

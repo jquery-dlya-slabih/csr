@@ -1,7 +1,6 @@
 import compression from 'compression';
 import express from 'express';
 import type { Request, Response } from 'express';
-import Redis from 'ioredis';
 import fs from 'node:fs';
 import https from 'node:https';
 import path from 'node:path';
@@ -17,7 +16,6 @@ const templatePath = isProduction ? 'dist/client/index.html' : 'index.html';
 const serverEntry = isProduction ? './dist/server/entry-server.js' : 'src/entry-server.tsx';
 const PORT = 3000;
 const DOMAIN = isProduction ? 'localhost' : 'ssr-local.com';
-const IS_REDIS_DISABLED = process.env.DISABLE_REDIS_CACHE === 'true';
 
 let render: (url: string, template: string, res: Response) => Promise<string>;
 let template: string;
@@ -46,7 +44,6 @@ async function prepareHTML(req: Request, res: Response, vite: ViteDevServer) {
 
 async function createServer() {
   const app = express();
-  const redis = IS_REDIS_DISABLED ? undefined : new Redis({ commandTimeout: 50 });
 
   app.use(
     serverTiming({
@@ -78,30 +75,13 @@ async function createServer() {
     app.use(vite.middlewares);
   }
 
-  app.use('/reset_redis_cache', async (_req, res) => {
-    const data = await redis?.flushall().catch(() => console.log('redis reset cache error'));
-
-    res.status(200).json(data ?? 'NOT OK');
-  });
-
   app.use('*splat', async (req, res) => {
     res.startTime('routing', 'routing total');
-    const url = req.originalUrl;
 
     try {
-      res.startTime('cache', 'get html from cache');
-      const cacheData = await redis?.get(url).catch(() => console.log('redis get cache error'));
-      res.endTime('cache');
-
-      if (cacheData) {
-        res.endTime('routing');
-        res.status(200).set({ 'Content-Type': 'text/html' }).end(cacheData);
-      } else {
-        const html = await prepareHTML(req, res, vite);
-        redis?.set(url, html, 'EX', 60 * 10).catch(() => console.log('redis set cache error'));
-        res.endTime('routing');
-        res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
-      }
+      const html = await prepareHTML(req, res, vite);
+      res.endTime('routing');
+      res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
     } catch (error) {
       vite?.ssrFixStacktrace(error as Error);
       console.error(error);

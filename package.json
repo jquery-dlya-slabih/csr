@@ -1,5 +1,5 @@
 {
-  "name": "ssr",
+  "name": "csr",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +8,11 @@
     "pnpm": "10"
   },
   "scripts": {
-    "dev": "DISABLE_REDIS_CACHE=true tsx watch server.ts",
+    "dev": "tsx watch server.ts",
     "build": "rm -rf dist/ && run-s build:*",
     "build:client": "tsc -b && vite build --outDir dist/client",
     "build:server": "tsc -b && vite build -c vite.ssr.config.ts --outDir dist/server --ssr src/entry-server.tsx",
-    "prod": "DISABLE_REDIS_CACHE=false NODE_ENV=production tsx server.ts",
+    "prod": "NODE_ENV=production tsx server.ts",
     "lint": "eslint src tests",
     "prettier:write": "prettier -w .",
     "prettier:check": "prettier -c .",
@@ -32,7 +32,6 @@
     "@tanstack/react-query-devtools": "5.72.2",
     "compression": "1.8.0",
     "express": "5.1.0",
-    "ioredis": "5.6.0",
     "js-cookie": "3.0.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
