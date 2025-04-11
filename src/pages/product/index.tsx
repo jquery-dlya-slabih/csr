@@ -1,10 +1,10 @@
 import { useQuery, skipToken } from '@tanstack/react-query';
-import { NavLink, useParams } from 'react-router';
+import { Link, useParams } from '@tanstack/react-router';
 
 import { getProduct } from '@/api.ts';
 
 function Product() {
-  const { id } = useParams();
+  const { id } = useParams({ strict: false });
   const { data, isError, isPending } = useQuery({
     queryKey: ['product', id],
     queryFn: id ? () => getProduct(id) : skipToken
@@ -37,9 +37,9 @@ function Product() {
             <div className="mt-24">{description}</div>
             <div className="mt-24 lg:mt-auto lg:flex">
               <button className="custom-button">add to cart</button>
-              <NavLink className="custom-button mt-12 block lg:mt-0 lg:ml-12" to="/">
+              <Link className="custom-button mt-12 block lg:mt-0 lg:ml-12" to="/">
                 Back
-              </NavLink>
+              </Link>
             </div>
           </div>
         </div>

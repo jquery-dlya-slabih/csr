@@ -1,11 +1,20 @@
 import { HydrationBoundary, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { StrictMode } from 'react';
-import { hydrateRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
+import { createRoot } from 'react-dom/client';
 
 import '@/index.css';
-import Router from '@/router.tsx';
+
+import { routeTree } from '@/routeTree.gen';
+
+const router = createRouter({ routeTree });
+
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router;
+  }
+}
 
 declare global {
   interface Window {
@@ -29,17 +38,16 @@ const queryClient = new QueryClient({
   }
 });
 
-const root = document.getElementById('root');
+const container = document.getElementById('root');
 
-if (root) {
-  hydrateRoot(
-    root,
+if (container) {
+  const root = createRoot(container);
+
+  root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <HydrationBoundary state={dehydratedState}>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
+          <RouterProvider router={router} />
         </HydrationBoundary>
         <ReactQueryDevtools />
       </QueryClientProvider>

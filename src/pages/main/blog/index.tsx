@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { Fragment } from 'react';
-import { NavLink } from 'react-router';
 
 import { getPosts } from '@/api.ts';
 
@@ -35,7 +35,7 @@ const Blog = () => {
       <div className="mt-34 lg:grid lg:grid-cols-2 lg:gap-12">
         {data.map(({ id, tags, title, body }, index) => (
           <Fragment key={id}>
-            <NavLink to={`/posts/${id}`} className="mb-18 flex lg:mb-0">
+            <Link to={`/posts/${id}`} className="mb-18 flex lg:mb-0">
               <img className="h-108 w-112" src={index % 2 ? girlImage : lipsImage} alt="girl" />
               <div className="ml-14">
                 <div className="flex items-center text-[12px] text-black/30 dark:text-white/30 uppercase">
@@ -47,7 +47,7 @@ const Blog = () => {
                 <div className="mt-4 text-[14px] font-bold uppercase">{title.replace('.', '')}</div>
                 <div className="mt-4 line-clamp-2 text-[12px]">{body.replace(title, '')}</div>
               </div>
-            </NavLink>
+            </Link>
             <div className="mb-18 h-1 w-full bg-black/30 last:hidden lg:hidden" />
           </Fragment>
         ))}

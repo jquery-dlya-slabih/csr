@@ -1,24 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router';
+import { Link, useLocation } from '@tanstack/react-router';
 
 import { checkAuth } from '@/api.ts';
 import Authorize from '@/components/authorize';
 import { HTML_DIVIDER } from '@/constants';
 
 import BagIcon from './images/bag.svg?react';
-import FbIcon from './images/fb.svg?react';
-import footerImage from './images/footer.webp';
 import gradientImage from './images/gradient.webp';
 import HearIcon from './images/heart.svg?react';
-import InstIcon from './images/inst.svg?react';
 import MenuIcon from './images/menu.svg?react';
 import ProfileIcon from './images/profile.svg?react';
 import SearchIcon from './images/search.svg?react';
-import XIcon from './images/x.svg?react';
 
-export default function Layout() {
+export default function Topline() {
   const { data, isError, isPending } = useQuery({
     queryKey: ['me'],
     queryFn: checkAuth,
@@ -68,12 +64,12 @@ export default function Layout() {
           <div className="lg:ml-16">
             Free delivery from <b>19</b> euros
           </div>
-          <NavLink
-            to="tracking"
+          <Link
+            to="/notFound"
             className="text-end font-bold uppercase underline underline-offset-2 transition-colors hover:opacity-70 lg:ml-auto lg:cursor-pointer"
           >
             order tracking
-          </NavLink>
+          </Link>
         </div>
       </div>
       <div className="flex h-48 items-center justify-between px-20 shadow-md dark:shadow-[#fb64b6]/50 lg:justify-end">
@@ -94,50 +90,6 @@ export default function Layout() {
         )}
         <BagIcon className="h-24 w-18 cursor-pointer transition-colors hover:opacity-70 lg:ml-16" />
       </div>
-      <div className="relative flex flex-col items-center">
-        <div className="flex max-w-[1200px] flex-col">
-          <Outlet />
-        </div>
-      </div>
-      <img src={footerImage} alt="footer gradient" className="h-6 w-full" />
-      <footer className="flex flex-col items-center bg-black px-20 pt-64 pb-20 text-white">
-        <div className="text-center text-[30px] font-bold">SUBSCRIBE TO OUR NEWS LETTER</div>
-        <input
-          type="email"
-          placeholder="example@email.com"
-          className="mt-12 w-208 border-b-1 border-b-white p-5 text-center outline-none placeholder:text-white/70"
-        />
-        <button className="mt-34 w-208 cursor-pointer border border-white p-12 transition-opacity hover:opacity-80 active:opacity-70">
-          SUBSCRIBE
-        </button>
-        <h3 className="mt-64 text-[18px] leading-32 font-bold uppercase">Terms and privacy</h3>
-        <a className="leading-32 uppercase" href="/">
-          Privacy Policy
-        </a>
-        <a className="leading-32 uppercase" href="/">
-          Terms and Conditions
-        </a>
-        <a className="leading-32 uppercase" href="/">
-          Ads based on interests
-        </a>
-        <a className="leading-32 uppercase" href="/">
-          Accessibility
-        </a>
-        <a className="leading-32 uppercase" href="/">
-          cookies
-        </a>
-        <div className="mt-60 flex w-200 justify-between pb-20">
-          <a href="/">
-            <FbIcon className="size-24" />
-          </a>
-          <a href="/">
-            <XIcon className="size-24" />
-          </a>
-          <a href="/">
-            <InstIcon className="size-24" />
-          </a>
-        </div>
-      </footer>
     </>
   );
 }

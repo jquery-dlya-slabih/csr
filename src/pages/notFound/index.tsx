@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router';
+import { Link } from '@tanstack/react-router';
 
 import desktopLayerImage from './images/desktopLayer.webp';
 import layerImage from './images/layer.webp';
@@ -29,9 +29,9 @@ function NotFound() {
         <div className="flex flex-col items-center p-16">
           <h1 className="mt-64 text-[36px] font-bold">404</h1>
           <div className="mt-6">Ooops page not found</div>
-          <NavLink className="custom-button mt-24" to="/">
+          <Link className="custom-button mt-24" to="/">
             To main page
-          </NavLink>
+          </Link>
         </div>
       </div>
     </>

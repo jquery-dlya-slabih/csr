@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
+import { Link } from '@tanstack/react-router';
 import { useState, useEffect, useRef } from 'react';
 import type { MouseEvent } from 'react';
-import { NavLink } from 'react-router';
 
 import { getTopProducts } from '@/api.ts';
 
@@ -40,7 +40,7 @@ function PromoSlider() {
       <div ref={carouselRef} className="flex h-395 snap-x snap-mandatory overflow-x-scroll scroll-smooth lg:mx-20">
         {data?.map(({ id, title, images }, index) => {
           return (
-            <NavLink
+            <Link
               id={`slide-${index}`}
               to={`/products/${id}`}
               key={id}
@@ -54,7 +54,7 @@ function PromoSlider() {
                 src={images[0]}
                 alt={title}
               />
-            </NavLink>
+            </Link>
           );
         })}
       </div>

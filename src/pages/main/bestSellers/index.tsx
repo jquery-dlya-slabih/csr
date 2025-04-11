@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { NavLink } from 'react-router';
+import { Link } from '@tanstack/react-router';
 
 import { getTopProducts } from '@/api.ts';
 
@@ -24,7 +24,7 @@ const BestSellers = () => {
   return (
     <div className="mx-20 mt-18 flex lg:mt-30 lg:mr-0">
       {data.map(({ id, images, brand, price, title }) => (
-        <NavLink to={`/products/${id}`} className="basis-1/2 odd:mr-20" key={id}>
+        <Link to={`/products/${id}`} className="basis-1/2 odd:mr-20" key={id}>
           <div className="relative h-138">
             <img
               src={images[0]}
@@ -40,7 +40,7 @@ const BestSellers = () => {
           <div data-testid="price" className="mt-8">
             {price} &euro;
           </div>
-        </NavLink>
+        </Link>
       ))}
     </div>
   );

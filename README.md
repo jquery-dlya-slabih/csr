@@ -16,22 +16,22 @@ Client side rendering template
 
 ## Commands
 
-| description                    | command                    |
-|--------------------------------| -------------------------- |
-| run dev build with dev server  | `pnpm dev`                 |
-| run prod build                 | `pnpm build`               |
-| run linting                    | `pnpm lint`                |
-| run prettier check             | `pnpm prettier:check`      |
-| run prettier write             | `pnpm prettier:write`      |
-| run type checking              | `pnpm types`               |
-| run bundle analyzer            | `pnpm analyze`             |
-| run unit tests                 | `pnpm test`                |
-| show unit tests information    | `pnpm test:ui`             |
-| run e2e tests                  | `pnpm e2e`                 |
-| run e2e tests in ui            | `pnpm e2e:ui`              |
-| show e2e tests information     | `pnpm e2e:report`          |
-| run e2e codegen                | `pnpm e2e:codegen`         |
-| generate assets for pwa        | `pnpm generate-pwa-assets` |
+| description                   | command                    |
+| ----------------------------- | -------------------------- |
+| run dev build with dev server | `pnpm dev`                 |
+| run prod build                | `pnpm build`               |
+| run linting                   | `pnpm lint`                |
+| run prettier check            | `pnpm prettier:check`      |
+| run prettier write            | `pnpm prettier:write`      |
+| run type checking             | `pnpm types`               |
+| run bundle analyzer           | `pnpm analyze`             |
+| run unit tests                | `pnpm test`                |
+| show unit tests information   | `pnpm test:ui`             |
+| run e2e tests                 | `pnpm e2e`                 |
+| run e2e tests in ui           | `pnpm e2e:ui`              |
+| show e2e tests information    | `pnpm e2e:report`          |
+| run e2e codegen               | `pnpm e2e:codegen`         |
+| generate assets for pwa       | `pnpm generate-pwa-assets` |
 
 # Hooks
 
@@ -50,9 +50,11 @@ If you want to delete all hooks:
 # HTTPS
 
 1. use command `sudo nano /etc/hosts`
-2. add `127.0.0.1 ssr-local.com`
+2. add `127.0.0.1 csr-local.com`
 3. save file
 4. use command `pnpm dev`
+
+A DNS reset may be required, for macOS the best solution is to simply restart the system.
 
 # Aliasing
 

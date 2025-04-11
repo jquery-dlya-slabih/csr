@@ -1,11 +1,10 @@
 import { useQuery, skipToken } from '@tanstack/react-query';
-import { NavLink, useParams } from 'react-router';
+import { Link, useParams } from '@tanstack/react-router';
 
 import { getPost } from '@/api.ts';
 
 function Post() {
-  const { id } = useParams();
-
+  const { id } = useParams({ strict: false });
   const { data, isPending, isError } = useQuery({
     queryKey: ['post', id],
     queryFn: id ? () => getPost(id) : skipToken
@@ -28,9 +27,9 @@ function Post() {
       <div className="p-20">
         <h1 className="text-[22px] uppercase">{title}</h1>
         <div className="mt-24">{body}</div>
-        <NavLink className="mt-24 block custom-button" to="/">
+        <Link className="mt-24 block custom-button" to="/">
           Back
-        </NavLink>
+        </Link>
       </div>
     </>
   );
