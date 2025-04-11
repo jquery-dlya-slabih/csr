@@ -16,7 +16,7 @@ const Post = () => {
   const { title, body, tags, id } = data;
 
   return (
-    <Link className="relative mx-20 mt-30 block lg:mx-0" to={`/posts/${id}`}>
+    <Link to="/posts/$id" params={{ id: id.toString() }} className="relative mx-20 mt-30 block lg:mx-0">
       <img src={lipsImage} alt="lips" className="h-270 w-full object-cover lg:h-312 lg:w-672" />
       <div className="absolute top-18 left-18">
         <div className="w-240 text-[28px] leading-32 font-bold tracking-[1px] text-white">{title.replace('.', '')}</div>

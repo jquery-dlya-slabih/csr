@@ -42,7 +42,8 @@ function PromoSlider() {
           return (
             <Link
               id={`slide-${index}`}
-              to={`/products/${id}`}
+              to="/products/$id"
+              params={{ id: id.toString() }}
               key={id}
               className="relative w-full flex-shrink-0 snap-center snap-always"
             >

@@ -35,7 +35,7 @@ const Blog = () => {
       <div className="mt-34 lg:grid lg:grid-cols-2 lg:gap-12">
         {data.map(({ id, tags, title, body }, index) => (
           <Fragment key={id}>
-            <Link to={`/posts/${id}`} className="mb-18 flex lg:mb-0">
+            <Link to="/posts/$id" params={{ id: id.toString() }} className="mb-18 flex lg:mb-0">
               <img className="h-108 w-112" src={index % 2 ? girlImage : lipsImage} alt="girl" />
               <div className="ml-14">
                 <div className="flex items-center text-[12px] text-black/30 dark:text-white/30 uppercase">

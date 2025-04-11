@@ -1,6 +1,6 @@
 #!/bin/sh
-#npm dedupe --check
-#npm prettier:check
-#npm lint
-#npm types
-#npm build
+pnpm dedupe --check
+pnpm prettier:check
+pnpm lint
+pnpm types
+pnpm build

@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
+import { Link, useLocation } from '@tanstack/react-router';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from '@tanstack/react-router';
 
 import { checkAuth } from '@/api.ts';
 import Authorize from '@/components/authorize';
-import { HTML_DIVIDER } from '@/constants';
 
 import BagIcon from './images/bag.svg?react';
 import gradientImage from './images/gradient.webp';
@@ -50,7 +49,6 @@ export default function Topline() {
 
   return (
     <>
-      {import.meta.env.SSR && HTML_DIVIDER}
       {authorizeFormShowed && <Authorize closeForm={() => setAuthorizeFormShowed(false)} />}
       <img src={gradientImage} alt="gradient" className="h-48 w-full" />
       <div className="absolute top-0 h-48 w-full px-20 pt-7 text-[11px] lg:px-40 lg:py-6">
@@ -65,7 +63,7 @@ export default function Topline() {
             Free delivery from <b>19</b> euros
           </div>
           <Link
-            to="/notFound"
+            to="/"
             className="text-end font-bold uppercase underline underline-offset-2 transition-colors hover:opacity-70 lg:ml-auto lg:cursor-pointer"
           >
             order tracking

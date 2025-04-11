@@ -29,7 +29,7 @@ const Products = () => {
       <h2 className="mt-64 px-20 text-center text-[32px] leading-[34px] font-bold">Products</h2>
       <div className="mt-34 grid grid-cols-2 gap-20 lg:grid-cols-4">
         {data.map(({ id, images, title, brand, rating, price }) => (
-          <Link to={`/products/${id}`} key={id}>
+          <Link to="/products/$id" params={{ id: id.toString() }} key={id}>
             <div className="relative h-138 bg-pink-200 transition-shadow hover:shadow-md hover:outline hover:outline-black">
               <img className="h-full w-full object-contain p-15" src={images[0]} alt={title} />
               <div className="absolute -right-1 -bottom-8 flex w-[80%] items-center justify-between bg-white">

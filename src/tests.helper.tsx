@@ -2,7 +2,6 @@ import { HydrationBoundary, QueryClient, QueryClientProvider } from '@tanstack/r
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { type RenderOptions, render } from '@testing-library/react';
 import { FC, PropsWithChildren, ReactElement, StrictMode } from 'react';
-import { BrowserRouter } from 'react-router';
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: unknown;
@@ -22,9 +21,7 @@ function renderWithProviders(ui: ReactElement, extendedRenderOptions: ExtendedRe
   const Wrapper: FC<PropsWithChildren> = ({ children }) => (
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <HydrationBoundary state={preloadedState}>
-          <BrowserRouter>{children}</BrowserRouter>
-        </HydrationBoundary>
+        <HydrationBoundary state={preloadedState}>{children}</HydrationBoundary>
         <ReactQueryDevtools />
       </QueryClientProvider>
     </StrictMode>
