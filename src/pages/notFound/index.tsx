@@ -1,6 +1,8 @@
 import { Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 
+import { Route as mainRoute } from '@/routes/index.tsx';
+
 import desktopLayerImage from './images/desktopLayer.webp';
 import layerImage from './images/layer.webp';
 
@@ -29,7 +31,7 @@ function NotFound() {
         <div className="flex flex-col items-center p-16">
           <h1 className="mt-64 text-[36px] font-bold">404</h1>
           <div className="mt-6">Ooops page not found</div>
-          <Link className="custom-button mt-24" to="/">
+          <Link className="custom-button mt-24" to={mainRoute.to}>
             To main page
           </Link>
         </div>

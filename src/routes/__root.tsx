@@ -1,6 +1,6 @@
-import { lazy } from 'react'
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+import { lazy } from 'react';
 
 import Footer from '@/components/footer';
 import Topline from '@/components/topline';

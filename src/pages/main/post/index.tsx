@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
 import { getMainPost } from '@/api.ts';
+import { Route as postsRoute } from '@/routes/posts.$id.tsx';
 
 import ClockImage from './images/clock.svg?react';
 import lipsImage from './images/lips.webp';
@@ -16,7 +17,7 @@ const Post = () => {
   const { title, body, tags, id } = data;
 
   return (
-    <Link to="/posts/$id" params={{ id: id.toString() }} className="relative mx-20 mt-30 block lg:mx-0">
+    <Link to={postsRoute.to} params={{ id: id.toString() }} className="relative mx-20 mt-30 block lg:mx-0">
       <img src={lipsImage} alt="lips" className="h-270 w-full object-cover lg:h-312 lg:w-672" />
       <div className="absolute top-18 left-18">
         <div className="w-240 text-[28px] leading-32 font-bold tracking-[1px] text-white">{title.replace('.', '')}</div>

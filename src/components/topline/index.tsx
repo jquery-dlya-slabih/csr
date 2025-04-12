@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 import { checkAuth } from '@/api.ts';
 import Authorize from '@/components/authorize';
+import { Route as mainRoute } from '@/routes/index.tsx';
 
 import BagIcon from './images/bag.svg?react';
 import gradientImage from './images/gradient.webp';
@@ -63,7 +64,7 @@ export default function Topline() {
             Free delivery from <b>19</b> euros
           </div>
           <Link
-            to="/"
+            to={mainRoute.to}
             className="text-end font-bold uppercase underline underline-offset-2 transition-colors hover:opacity-70 lg:ml-auto lg:cursor-pointer"
           >
             order tracking

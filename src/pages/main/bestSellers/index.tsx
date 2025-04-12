@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
 import { getTopProducts } from '@/api.ts';
+import { Route as productsRoute } from '@/routes/products.$id.tsx';
 
 import Skeleton from './skeleton';
 
@@ -24,7 +25,7 @@ const BestSellers = () => {
   return (
     <div className="mx-20 mt-18 flex lg:mt-30 lg:mr-0">
       {data.map(({ id, images, brand, price, title }) => (
-        <Link to="/products/$id" params={{ id: id.toString() }} className="basis-1/2 odd:mr-20" key={id}>
+        <Link to={productsRoute.to} params={{ id: id.toString() }} className="basis-1/2 odd:mr-20" key={id}>
           <div className="relative h-138">
             <img
               src={images[0]}

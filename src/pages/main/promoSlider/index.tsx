@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import type { MouseEvent } from 'react';
 
 import { getTopProducts } from '@/api.ts';
+import { Route as productsRoute } from '@/routes/products.$id.tsx';
 
 function PromoSlider() {
   const [slide, setSlide] = useState(0);
@@ -42,7 +43,7 @@ function PromoSlider() {
           return (
             <Link
               id={`slide-${index}`}
-              to="/products/$id"
+              to={productsRoute.to}
               params={{ id: id.toString() }}
               key={id}
               className="relative w-full flex-shrink-0 snap-center snap-always"

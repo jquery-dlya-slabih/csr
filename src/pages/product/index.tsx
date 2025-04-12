@@ -2,6 +2,7 @@ import { useQuery, skipToken } from '@tanstack/react-query';
 import { Link, useParams } from '@tanstack/react-router';
 
 import { getProduct } from '@/api.ts';
+import { Route as mainRoute } from '@/routes/index.tsx';
 
 function Product() {
   const { id } = useParams({ strict: false });
@@ -37,7 +38,7 @@ function Product() {
             <div className="mt-24">{description}</div>
             <div className="mt-24 lg:mt-auto lg:flex">
               <button className="custom-button">add to cart</button>
-              <Link className="custom-button mt-12 block lg:mt-0 lg:ml-12" to="/">
+              <Link className="custom-button mt-12 block lg:mt-0 lg:ml-12" to={mainRoute.to}>
                 Back
               </Link>
             </div>

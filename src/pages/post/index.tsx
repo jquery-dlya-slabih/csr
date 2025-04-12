@@ -2,6 +2,7 @@ import { useQuery, skipToken } from '@tanstack/react-query';
 import { Link, useParams } from '@tanstack/react-router';
 
 import { getPost } from '@/api.ts';
+import { Route as mainRoute } from '@/routes/index.tsx';
 
 function Post() {
   const { id } = useParams({ strict: false });
@@ -27,7 +28,7 @@ function Post() {
       <div className="p-20">
         <h1 className="text-[22px] uppercase">{title}</h1>
         <div className="mt-24">{body}</div>
-        <Link className="mt-24 block custom-button" to="/">
+        <Link className="mt-24 block custom-button" to={mainRoute.to}>
           Back
         </Link>
       </div>
