@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const url = 'https://ssr-local.com:3000';
+const url = 'https://csr-local.com:3000';
 
 export default defineConfig({
   testDir: './tests',
