@@ -1,9 +1,9 @@
+import { lazy } from 'react'
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 
 import Footer from '@/components/footer';
 import Topline from '@/components/topline';
-import NotFound from '@/pages/notFound';
 
 export const Route = createRootRoute({
   component: () => (
@@ -18,5 +18,5 @@ export const Route = createRootRoute({
       <TanStackRouterDevtools />
     </>
   ),
-  notFoundComponent: () => <NotFound />
+  notFoundComponent: lazy(() => import('@/pages/notFound'))
 });
