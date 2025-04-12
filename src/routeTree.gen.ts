@@ -12,8 +12,8 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as ProductsIdImport } from './routes/products/$id'
-import { Route as PostsIdImport } from './routes/posts/$id'
+import { Route as ProductsIdImport } from './routes/products.$id'
+import { Route as PostsIdImport } from './routes/posts.$id'
 
 // Create/Update Routes
 
@@ -124,10 +124,10 @@ export const routeTree = rootRoute
       "filePath": "index.tsx"
     },
     "/posts/$id": {
-      "filePath": "posts/$id.tsx"
+      "filePath": "posts.$id.tsx"
     },
     "/products/$id": {
-      "filePath": "products/$id.tsx"
+      "filePath": "products.$id.tsx"
     }
   }
 }
