@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Link, useLocation } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 
@@ -22,7 +22,6 @@ export default function Topline() {
     retryDelay: 3000
   });
 
-  const location = useLocation();
   const [authorizeFormShowed, setAuthorizeFormShowed] = useState(false);
 
   const themeCookie = Cookies.get('theme');
@@ -32,14 +31,6 @@ export default function Topline() {
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }, [location]);
 
   const changeTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
