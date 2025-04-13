@@ -7,8 +7,6 @@ import { createRoot } from 'react-dom/client';
 import '@/index.css';
 import { routeTree } from '@/routeTree.gen';
 
-const router = createRouter({ routeTree, scrollRestoration: true, defaultPreload: 'intent' });
-
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router;
@@ -27,6 +25,13 @@ const queryClient = new QueryClient({
       staleTime: 60 * 1000
     }
   }
+});
+
+const router = createRouter({
+  routeTree,
+  scrollRestoration: true,
+  defaultPreload: 'intent',
+  context: { queryClient }
 });
 
 const container = document.getElementById('root');

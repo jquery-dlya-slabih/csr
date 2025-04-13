@@ -1,25 +1,13 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
-import { getProducts } from '@/api.ts';
+import { productsQuery } from '@/queries.ts';
 import { Route as productsRoute } from '@/routes/products.$id.tsx';
 
 import StarIcon from './images/star.svg?react';
 
 const Products = () => {
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['products'],
-    queryFn: getProducts,
-    select: (data) => data.pages.map((page) => page.products).flat(),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, _allPages, lastPageParam) => {
-      if (lastPage.total <= lastPage.skip + 4) {
-        return undefined;
-      }
-
-      return lastPageParam + 4;
-    }
-  });
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(productsQuery());
 
   if (!data) {
     return null;

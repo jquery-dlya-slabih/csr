@@ -1,35 +1,23 @@
-import { HydrationBoundary, QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { createRootRoute, createRouter, RouterProvider } from '@tanstack/react-router';
-import { type RenderOptions, render } from '@testing-library/react';
-import { FC, PropsWithChildren, ReactElement, StrictMode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createRouter, RouterProvider } from '@tanstack/react-router';
+import { render } from '@testing-library/react';
+import type { RenderOptions } from '@testing-library/react';
+import { StrictMode } from 'react';
+import type { FC, PropsWithChildren, ReactElement } from 'react';
 
-interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-  preloadedState?: unknown;
-}
+import { routeTree } from '@/routeTree.gen';
 
-function renderWithProviders(ui: ReactElement, extendedRenderOptions: ExtendedRenderOptions = {}) {
-  const { preloadedState = {}, ...renderOptions } = extendedRenderOptions;
+const queryClient = new QueryClient();
 
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60 * 1000
-      }
-    }
-  });
-
+function renderWithProviders(ui: ReactElement, renderOptions?: RenderOptions) {
   const Wrapper: FC<PropsWithChildren> = ({ children }) => {
-    const rootRoute = createRootRoute({ component: () => children });
-    const router = createRouter({ routeTree: rootRoute });
+    routeTree.options.component = () => children;
+    const router = createRouter({ routeTree, context: { queryClient } });
 
     return (
       <StrictMode>
         <QueryClientProvider client={queryClient}>
-          <HydrationBoundary state={preloadedState}>
-            <RouterProvider router={router} />
-          </HydrationBoundary>
-          <ReactQueryDevtools />
+          <RouterProvider router={router} />
         </QueryClientProvider>
       </StrictMode>
     );

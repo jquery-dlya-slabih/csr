@@ -2,7 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { Fragment } from 'react';
 
-import { getPosts } from '@/api.ts';
+import { blogQuery } from '@/queries.ts';
 import { Route as postsRoute } from '@/routes/posts.$id.tsx';
 
 import ClockIcon from './images/clock.svg?react';
@@ -10,19 +10,7 @@ import girlImage from './images/girl.webp';
 import lipsImage from './images/lips.webp';
 
 const Blog = () => {
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['posts'],
-    queryFn: getPosts,
-    select: (data) => data.pages.map((page) => page.posts).flat(),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, _allPages, lastPageParam) => {
-      if (lastPage.total <= lastPage.skip + 4) {
-        return undefined;
-      }
-
-      return lastPageParam + 4;
-    }
-  });
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(blogQuery());
 
   if (!data) {
     return null;

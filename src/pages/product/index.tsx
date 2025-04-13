@@ -1,15 +1,12 @@
-import { useQuery, skipToken } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from '@tanstack/react-router';
 
-import { getProduct } from '@/api.ts';
+import { productQuery } from '@/queries.ts';
 import { Route as mainRoute } from '@/routes/index.tsx';
 
 function Product() {
   const { id } = useParams({ strict: false });
-  const { data, isError, isPending } = useQuery({
-    queryKey: ['product', id],
-    queryFn: id ? () => getProduct(id) : skipToken
-  });
+  const { data, isError, isPending } = useQuery(productQuery(id));
 
   if (isPending) {
     return <div className="animate-pulse p-50 font-bold text-pink-500">Loading...</div>;

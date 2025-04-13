@@ -1,17 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
-import { getTopProducts } from '@/api.ts';
+import { bestSellersQuery } from '@/queries.ts';
 import { Route as productsRoute } from '@/routes/products.$id.tsx';
 
 import Skeleton from './skeleton';
 
 const BestSellers = () => {
-  const { data, isPending, isError } = useQuery({
-    queryKey: ['top_products'],
-    queryFn: getTopProducts,
-    select: (data) => data.slice(1, 3)
-  });
+  const { data, isPending, isError } = useQuery(bestSellersQuery());
 
   if (isPending || isError) {
     return (
