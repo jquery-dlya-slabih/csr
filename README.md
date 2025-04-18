@@ -33,7 +33,7 @@ Client side rendering template
 | run e2e codegen               | `pnpm e2e:codegen`         |
 | generate assets for pwa       | `pnpm generate-pwa-assets` |
 
-# Hooks
+## Hooks
 
 There is a `pre-push` hook in the `.githooks` folder. If you want to add another hook, for example `pre-commit`, then you need:
 
@@ -47,34 +47,34 @@ If you want to delete all hooks:
 2. remove `prepare` command in `package.json`
 3. in project root use command `git config --unset core.hooksPath`
 
-# HTTPS
+## HTTPS
 
 1. use command `sudo nano /etc/hosts`
 2. add `127.0.0.1 csr-local.com`
 3. save file
 4. use command `pnpm dev`
 
-A DNS reset may be required, for macOS the best solution is to simply restart the system.
+A DNS reset may be necessary. On macOS, the simplest solution is to restart the system.
 
-# Aliasing
+## Aliasing
 
 For aliasing just add alias in file `tsconfig.app.json`.
 
-# Test users
+## Test users
 
 | login  | password   |
 | ------ | ---------- |
 | avat   | avatpass   |
 | emilys | emilyspass |
 
-# Tests
+## Tests
 
 - Test runner https://vitest.dev/
 - Render react components https://testing-library.com/docs/react-testing-library/intro/
 - Custom matchers to test the state of the DOM https://github.com/testing-library/jest-dom
 - E2E tests https://playwright.dev/
 
-# Generating pwa assets
+## Generating pwa assets
 
 For generating pwa assets:
 
@@ -83,7 +83,7 @@ For generating pwa assets:
 
 If you have any problems with canvas on macOS, use command `brew install pkg-config cairo pango libpng jpeg giflib librsvg`.
 
-# Lightning CSS
+## Lightning CSS
 
 Tailwind CSS v4.0 is designed for and tested on modern browsers, and the core functionality of the framework
 specifically depends on these browser versions:
@@ -95,9 +95,17 @@ specifically depends on these browser versions:
 For this reason, we need to transpile the code to older browsers. List of supported browsers
 [here](https://browserslist.dev/?q=ZGVmYXVsdHMgYW5kIGZ1bGx5IHN1cHBvcnRzIGVzNi1tb2R1bGU%3D).
 
-In other hand, if you don't need to support older browsers than tailwind designed, you can remove Lightning CSS.
+Alternatively, if you only need to support browsers compatible with Tailwind, you can safely remove Lightning CSS.
 
-# TO DO
+## SSG
+
+Since **TanStack Router** doesn’t work on the server without **TanStack Start**, static generation isn’t possible.
+In a separate repository, I demonstrated a concept of how this could be implemented using **React Router** as an example.
+
+The **[master](https://github.com/jquery-dlya-slabih/ssg-example)** branch has an example without code splitting, while
+the **[lazy](https://github.com/jquery-dlya-slabih/ssg-example/tree/lazy)** branch demonstrates its usage with code splitting.
+
+## TO DO
 
 - https://vite-pwa-org.netlify.app/ add offline mode
 - research mswjs
