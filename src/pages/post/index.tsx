@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from '@tanstack/react-router';
 
-import { postQuery } from '@/queries.ts';
+import { postQuery } from '@/data/post.ts';
 import { Route as mainRoute } from '@/routes/index.tsx';
 
 function Post() {

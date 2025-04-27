@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { useState, useEffect, useRef } from 'react';
 import type { MouseEvent } from 'react';
 
-import { topProductsQuery } from '@/queries.ts';
+import { topProductsQuery } from '@/data/main.ts';
 import { Route as productsRoute } from '@/routes/products.$id.tsx';
 
 function PromoSlider() {
@@ -39,7 +39,7 @@ function PromoSlider() {
   return (
     <div className="relative h-375 overflow-y-hidden">
       <div ref={carouselRef} className="flex h-395 snap-x snap-mandatory overflow-x-scroll scroll-smooth lg:mx-20">
-        {data?.map(({ id, title, images }, index) => {
+        {data?.products.map(({ id, title, images }, index) => {
           return (
             <Link
               id={`slide-${index}`}

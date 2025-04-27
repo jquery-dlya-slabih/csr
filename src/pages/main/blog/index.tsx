@@ -2,7 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 import { Fragment } from 'react';
 
-import { blogQuery } from '@/queries.ts';
+import { blogQuery } from '@/data/main.ts';
 import { Route as postsRoute } from '@/routes/posts.$id.tsx';
 
 import ClockIcon from './images/clock.svg?react';

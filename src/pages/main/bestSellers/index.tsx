@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
-import { bestSellersQuery } from '@/queries.ts';
+import { bestSellersQuery } from '@/data/main.ts';
 import { Route as productsRoute } from '@/routes/products.$id.tsx';
 
 import Skeleton from './skeleton';

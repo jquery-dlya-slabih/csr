@@ -3,8 +3,8 @@ import { Link } from '@tanstack/react-router';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 
-import { checkAuth } from '@/api.ts';
 import Authorize from '@/components/authorize';
+import { checkAuthQuery } from '@/data/auth.ts';
 import { Route as mainRoute } from '@/routes/index.tsx';
 
 import BagIcon from './images/bag.svg?react';
@@ -15,15 +15,8 @@ import ProfileIcon from './images/profile.svg?react';
 import SearchIcon from './images/search.svg?react';
 
 export default function Topline() {
-  const { data, isError, isPending } = useQuery({
-    queryKey: ['me'],
-    queryFn: checkAuth,
-    retry: 1,
-    retryDelay: 3000
-  });
-
+  const { data, isError, isPending } = useQuery(checkAuthQuery());
   const [authorizeFormShowed, setAuthorizeFormShowed] = useState(false);
-
   const themeCookie = Cookies.get('theme');
   const isThemeValid = themeCookie === 'light' || themeCookie === 'dark';
   const [theme, setTheme] = useState<'light' | 'dark'>(isThemeValid ? themeCookie : 'light');

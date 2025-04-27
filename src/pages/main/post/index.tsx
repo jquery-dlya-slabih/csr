@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
-import { mainPostQuery } from '@/queries.ts';
+import { mainPostQuery } from '@/data/main.ts';
 import { Route as postsRoute } from '@/routes/posts.$id.tsx';
 
 import ClockImage from './images/clock.svg?react';
@@ -14,7 +14,7 @@ const Post = () => {
     return null;
   }
 
-  const { title, body, tags, id } = data;
+  const { title, body, tags, id } = data.posts[0];
 
   return (
     <Link to={postsRoute.to} params={{ id: id.toString() }} className="relative mx-20 mt-30 block lg:mx-0">

@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 
+import { postQuery } from '@/data/post.ts';
 import PostPage from '@/pages/post';
-import { postQuery } from '@/queries.ts';
 
 export const Route = createFileRoute('/posts/$id')({
   component: PostPage,

@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Link } from '@tanstack/react-router';
 
-import { productsQuery } from '@/queries.ts';
+import { productsQuery } from '@/data/main.ts';
 import { Route as productsRoute } from '@/routes/products.$id.tsx';
 
 import StarIcon from './images/star.svg?react';

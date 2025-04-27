@@ -1,8 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 import type { KeyboardEvent, MouseEvent, ChangeEvent } from 'react';
 
-import { login } from '@/api.ts';
+import { login } from '@/data/auth.ts';
 
 function Authorize({ closeForm }: Readonly<{ closeForm: () => void }>) {
   const [usernameValue, setUsernameValue] = useState('');
@@ -21,6 +22,7 @@ function Authorize({ closeForm }: Readonly<{ closeForm: () => void }>) {
   const { mutate, isPending, isError, reset } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
+      Cookies.set('accessToken', data.accessToken);
       queryClient.setQueryData(['me'], data);
       closeForm();
     }

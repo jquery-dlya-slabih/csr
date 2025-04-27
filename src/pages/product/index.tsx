@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from '@tanstack/react-router';
 
-import { productQuery } from '@/queries.ts';
+import { productQuery } from '@/data/product.ts';
 import { Route as mainRoute } from '@/routes/index.tsx';
 
 function Product() {

@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 
+import { topProductsQuery, bestSellersQuery, mainPostQuery, blogQuery, productsQuery } from '@/data/main.ts';
 import MainPage from '@/pages/main';
-import { topProductsQuery, bestSellersQuery, mainPostQuery, blogQuery, productsQuery } from '@/queries.ts';
 
 export const Route = createFileRoute('/')({
   component: MainPage,

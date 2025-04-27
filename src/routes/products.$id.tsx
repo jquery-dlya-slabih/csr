@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 
+import { productQuery } from '@/data/product.ts';
 import ProductPage from '@/pages/product';
-import { productQuery } from '@/queries.ts';
 
 export const Route = createFileRoute('/products/$id')({
   component: ProductPage,
