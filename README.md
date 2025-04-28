@@ -105,8 +105,6 @@ In a separate repository, I demonstrated a concept of how this could be implemen
 The **[master](https://github.com/jquery-dlya-slabih/ssg-example)** branch has an example without code splitting, while
 the **[lazy](https://github.com/jquery-dlya-slabih/ssg-example/tree/lazy)** branch demonstrates its usage with code splitting.
 
-## TO DO
+## Contributing
 
-- https://vite-pwa-org.netlify.app/ add offline mode
-- research mswjs
-- research https://orval.dev/
+Feel free to open an issue or submit PRs.
